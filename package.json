@@ -1,0 +1,14 @@
+{
+  "name": "tar-diff",
+  "version": "2019.03.22",
+  "description": "compare two tar archives",
+  "keywords": [
+    "tar",
+    "diff"
+  ],
+  "homepage": "https://github.com/looking-for-a-job/tar-diff",
+  "license": "Unlicense",
+  "bin": {
+    "tar-diff": "./scripts/tar-diff"
+  }
+}

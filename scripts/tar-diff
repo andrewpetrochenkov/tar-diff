@@ -1,0 +1,31 @@
+#!/usr/bin/env bash
+{ set +x; } 2>/dev/null
+
+
+usage() {
+    echo "usage: $(basename $0) archive1 archive2" 1>&2
+    [[ $1 == "-h" ]] || [[ $1 == "--help" ]]; exit
+}
+
+[[ $1 == "-h" ]] || [[ $1 == "--help" ]] && usage "$@"
+
+[[ $# != 2 ]] && usage
+
+[[ "$1" == *"://"* ]] && {
+    output="$(mktemp)" || exit
+    curl -fs -o "$output" "$1" || exit
+    set -- "$output" "$2"
+}
+[[ "$2" == *"://"* ]] && {
+    output="$(mktemp)" || exit
+    curl -fs -o "$output" "$2" || exit
+    set -- "$1" "$output"
+}
+
+mktemp1="$(mktemp -d)" || exit
+mktemp2="$(mktemp -d)" || exit
+
+tar xf "$1" -C "$mktemp1" --strip=1 || exit
+tar xf "$2" -C "$mktemp2" --strip=1 || exit
+
+diff -r "$mktemp1" "$mktemp2";:
