@@ -1,6 +1,6 @@
 {
   "name": "tar-diff",
-  "version": "2019.03.22",
+  "version": "2019.3.23",
   "description": "compare two tar archives",
   "keywords": [
     "tar",
