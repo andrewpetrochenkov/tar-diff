@@ -1,7 +1,9 @@
 <!--
 https://pypi.org/project/readme-generator/
+https://pypi.org/project/python-readme-generator/
 -->
 
+[![](https://img.shields.io/badge/OS-Unix-blue.svg?longCache=True)]()
 [![](https://img.shields.io/pypi/v/tar-diff.svg?maxAge=3600)](https://pypi.org/project/tar-diff/)
 [![](https://img.shields.io/npm/v/tar-diff.svg?maxAge=3600)](https://www.npmjs.com/package/tar-diff)
 [![Travis](https://api.travis-ci.org/looking-for-a-job/tar-diff.svg?branch=master)](https://travis-ci.org/looking-for-a-job/tar-diff/)
@@ -17,7 +19,7 @@ $ [sudo] pip install tar-diff
 #### Features
 file/url arguments supported
 
-#### CLI
+#### Scripts usage
 ```bash
 usage: tar-diff archive1 archive2
 ```
@@ -31,12 +33,12 @@ complicated example. bump python project version
 ```bash
 $ dist_dir="$(mktemp -d)"
 $ python setup.py sdist --dist-dir="$dist_dir" &> /dev/null
-$ sdist="$(find "$dist_dir" -type f)"
+$ sdist="$(find "$dist_dir" -type f -name "*.tar.gz")"
 $ url="$(python -m pypi_get.urls <name> | grep tar.gz)"
 $ diff="$(tar-diff "$sdist" "$url")"
 $ [[ -n "$diff" ]] && bumpversion
 ```
 
 <p align="center">
-    <a href="https://pypi.org/project/readme-generator/">readme-generator</a>
+    <a href="https://pypi.org/project/python-readme-generator/">python-readme-generator</a>
 </p>
